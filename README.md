@@ -1,9 +1,9 @@
 # Exp-06-Configuration-of-ADC-for-converting-analog-to-digital-signals
 
 
-## Name :	
-## Roll no:
-## Date of experiment : 
+## Name :	SHAVEDHA Y
+## Roll no: 212221230095
+## Date of experiment : 03-11-2022
   
   
 ## Aim: To configure internal ADC for   LPC2148 ARM 7 and write a code for displaying the values varying from 0v to 3.3v to its equivalent digital values 
@@ -177,19 +177,30 @@ ADxDRy. E.g. AD0DR1 contains ADC result of channel 1 of ADC0.
 Figure -08 Circuit diagram of interfacing an POT with ADC input pin 
 
 ## Kiel - Program 
- 
+ #include<lpc214x.h>
+#include "LCD.h"
+#include "ADC.h"
+unsigned int val;
+int main()
+{
+	IO1DIR=0xffffffff;
+	IO0DIR=0x00000000;
+	PINSEL0=0X300;
+	VPBDIV=0x02;
+	lcd_init();
+	show(" ADC Value:");
+	while(1){
+		cmd(0x8b);
+		val=adc(0,6);
+		dat((val/1000)+48);
+		dat(((val/100)%10)+48);
+		dat(((val/10)%10)+48);
+		dat((val%10)+48);
+	}
+}
 ## Tabulations and graph 
-SL NO	% OF POT VALUE	ADC VALUE
-1		
-2		
-3		
-4		
-5		
-6		
-7		
-8		
-9		
-10		
+![ex6tab](https://user-images.githubusercontent.com/93427376/200113882-96639080-18b1-464d-a83d-35e1f9acff5f.jpeg)
+	
 
  ![image](https://user-images.githubusercontent.com/36288975/198947184-dbccf4b1-10a1-4090-a670-93526ed6e597.png)
 
@@ -197,12 +208,17 @@ SL NO	% OF POT VALUE	ADC VALUE
 
  
 Figure -09 graph between % of pot(1Kohm) values and ADC 
-
-
+##Output screen shots :
+### BEFORE SIMULATION
+![EX6BEF](https://user-images.githubusercontent.com/93427376/200113933-fe7a4291-4bf6-42fe-8664-45e8b225e10a.jpeg)
+### AFTER SIMULATION
+![EX6AF](https://user-images.githubusercontent.com/93427376/200113971-7634dc8b-1797-4f27-816e-b9840b0b7756.jpeg)
+### CIRCUIT DIAGRAM
+![EX6CD](https://user-images.githubusercontent.com/93427376/200114021-8b322385-4468-4d2d-9277-3bd4f9c7be5f.jpeg)
 Result :
 Configuring an ADC and the input values are displayed on LCD screen 
 
-Output screen shots :
+
 
 
 
