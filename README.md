@@ -177,6 +177,7 @@ ADxDRy. E.g. AD0DR1 contains ADC result of channel 1 of ADC0.
 Figure -08 Circuit diagram of interfacing an POT with ADC input pin 
 
 ## Kiel - Program 
+```
  #include<lpc214x.h>
 #include "LCD.h"
 #include "ADC.h"
@@ -198,6 +199,7 @@ int main()
 		dat((val%10)+48);
 	}
 }
+```
 ## Tabulations and graph 
 ![ex6tab](https://user-images.githubusercontent.com/93427376/200113882-96639080-18b1-464d-a83d-35e1f9acff5f.jpeg)
 	
